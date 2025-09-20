@@ -1,7 +1,7 @@
 {
-  "name": "scaffold-ui",
+  "name": "mockui",
   "version": "0.0.1",
-  "description": "",
+  "description": "A UI library to create placeholder components for development",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
