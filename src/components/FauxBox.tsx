@@ -1,23 +1,15 @@
-import React from "react";
-import { ColorName, ColorWeight, getColorHex } from "../lib/colors";
+import type { FauxBoxProps } from "../types";
+import { getColorHex } from "../lib/colors";
 import { useElementSize } from "../lib/hooks";
 import { getColorForText } from "../lib/utils";
-
-export type FauxBoxProps = {
-  title?: string;
-  color?: ColorName;
-  colorWeight?: ColorWeight;
-  style?: React.CSSProperties;
-  showSize?: boolean;
-  autoColor?: boolean;
-};
+import { defaultColor, defaultColorWeight } from "../constants";
 
 export function FauxBox({
   title,
-  color = "red",
-  colorWeight = 500,
+  color = defaultColor,
+  colorWeight = defaultColorWeight,
   style = {},
-  showSize = false,
+  displaySize: showSize = false,
   autoColor = false,
 }: FauxBoxProps) {
   const stripeColor =

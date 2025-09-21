@@ -1,4 +1,5 @@
-import { ColorWeight, getColorHex, getColorNames } from "./colors";
+import type { ColorWeight } from "../types";
+import { getColorHex, getColorNames } from "./colors";
 
 export const getColorForText = (text: string, weight: ColorWeight) => {
   const colorIndex =

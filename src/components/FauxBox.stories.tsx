@@ -21,7 +21,7 @@ FauxBoxWithSize.args = {
   title: "FauxBox With Size",
   color: "red",
   colorWeight: 300,
-  showSize: true,
+  displaySize: true,
 };
 
 export const FauxBoxWithAutoColor: StoryFn<typeof FauxBox> = () => (

@@ -1,8 +1,5 @@
+import type { ColorFamily, ColorName, ColorWeight, ColorValue } from "../types";
 import {
-  ColorFamily,
-  ColorName,
-  ColorWeight,
-  ColorValue,
   colorPalette,
   getColorByName,
   getColorByWeight,
