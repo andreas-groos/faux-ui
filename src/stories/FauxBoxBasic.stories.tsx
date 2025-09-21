@@ -46,3 +46,10 @@ export const FillsParent = () => (
 FillsParent.args = {
   title: "FauxBox Fills Parent",
 };
+
+export const ColorFromText = () => (
+  <FauxBox
+    title="The color is assigned by the `title` and is stable"
+    autoColor={true}
+  />
+);
