@@ -4,7 +4,7 @@ import { fauxBoxArgTypes } from "./shared-controls";
 import { FauxBoxProps } from "../types";
 
 export default {
-  title: "Faux-UI/FauxBox `displaySize` Props",
+  title: "Faux-UI/FauxBox `showDimensions` Props",
   component: FauxBox,
   argTypes: fauxBoxArgTypes,
 } as Meta<typeof FauxBox>;
@@ -12,13 +12,13 @@ export default {
 const Template: StoryFn<typeof FauxBox> = (args) => (
   <FauxBox showDimensions {...args} />
 );
-export const DisplaySizeTrue = Template.bind({});
-DisplaySizeTrue.args = {
+export const ShowDimensionsTrue = Template.bind({});
+ShowDimensionsTrue.args = {
   title: "Box with dimensions displayed",
 };
 
-export const DisplaySizeFalse = Template.bind({});
-DisplaySizeFalse.args = {
+export const ShowDimensionsFalse = Template.bind({});
+ShowDimensionsFalse.args = {
   showDimensions: false,
   title: "Box without dimensions displayed",
 };
