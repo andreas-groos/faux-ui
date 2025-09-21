@@ -12,6 +12,17 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  viteFinal: async (config) => {
+    return {
+      ...config,
+      css: {
+        ...config.css,
+        postcss: {
+          plugins: [require("tailwindcss"), require("autoprefixer")],
+        },
+      },
+    };
+  },
   docs: {
     autodocs: "tag",
   },

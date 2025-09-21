@@ -4,7 +4,7 @@ export type FauxBoxProps = {
 
 export function FauxBox({ title }: FauxBoxProps) {
   return (
-    <div style={{ border: "1px solid black", padding: "10px" }}>
+    <div className="border border-black p-4 rounded-lg bg-gray-50 shadow-sm">
       {title || "FauxBox Component"}
     </div>
   );
