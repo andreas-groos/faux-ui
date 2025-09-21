@@ -8,13 +8,20 @@ export default {
 
 const Template: StoryFn<typeof FauxBox> = (args) => <FauxBox {...args} />;
 
-export const FauxBoxFull = Template.bind({});
-FauxBoxFull.args = {
-  title: "FauxBox Full",
+export const FauxBoxSimple = Template.bind({});
+FauxBoxSimple.args = {
+  title: "FauxBox Simple",
   color: "red",
   colorWeight: 300,
 };
 
+export const FauxBoxWithSize = Template.bind({});
+FauxBoxWithSize.args = {
+  title: "FauxBox With Size",
+  color: "red",
+  colorWeight: 300,
+  showSize: true,
+};
 export const ThreeBoxesInFlex: StoryFn<typeof FauxBox> = () => (
   <div
     style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}
