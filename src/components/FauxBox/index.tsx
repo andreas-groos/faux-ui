@@ -1,6 +1,7 @@
 import React from "react";
-import { ColorName, ColorWeight, getColorHex } from "../../colors";
+import { ColorName, ColorWeight, getColorHex } from "../../lib/colors";
 import { useElementSize } from "../../lib/hooks";
+import { getColorForText } from "../../lib";
 
 export type FauxBoxProps = {
   title?: string;
@@ -8,6 +9,7 @@ export type FauxBoxProps = {
   colorWeight?: ColorWeight;
   style?: React.CSSProperties;
   showSize?: boolean;
+  autoColor?: boolean;
 };
 
 export function FauxBox({
@@ -16,11 +18,13 @@ export function FauxBox({
   colorWeight = 500,
   style = {},
   showSize = false,
+  autoColor = false,
 }: FauxBoxProps) {
-  const stripePattern = `repeating-linear-gradient(45deg, white 0 10px, ${getColorHex(
-    color,
-    colorWeight
-  )} 10px 12px)`;
+  const stripeColor =
+    autoColor && title
+      ? getColorForText(title ?? "aa", colorWeight)
+      : getColorHex(color, colorWeight);
+  const stripePattern = `repeating-linear-gradient(45deg, white 0 10px, ${stripeColor} 10px 12px)`;
 
   const { ref, width, height } = useElementSize({ watch: showSize });
   return (

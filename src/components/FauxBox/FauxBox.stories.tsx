@@ -1,5 +1,6 @@
 import { StoryFn, Meta } from "@storybook/react";
 import { FauxBox } from "./";
+import { Story } from "storybook/internal/csf";
 
 export default {
   title: "Faux-UI/FauxBox",
@@ -22,6 +23,20 @@ FauxBoxWithSize.args = {
   colorWeight: 300,
   showSize: true,
 };
+
+export const FauxBoxWithAutoColor: StoryFn<typeof FauxBox> = () => (
+  <div>
+    <FauxBox title="123" autoColor={true} />
+    <FauxBox title="123" autoColor={true} colorWeight={100} />
+    <FauxBox title="234" autoColor={true} />
+    <FauxBox title="345" autoColor={true} />
+  </div>
+);
+FauxBoxWithAutoColor.args = {
+  title: "FauxBox With Auto Color",
+  autoColor: true,
+};
+
 export const ThreeBoxesInFlex: StoryFn<typeof FauxBox> = () => (
   <div
     style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}
