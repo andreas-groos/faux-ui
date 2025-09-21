@@ -8,7 +8,7 @@ export default {
   argTypes: fauxBoxArgTypes,
 } as Meta<typeof FauxProvider>;
 
-export const Default = () => (
+export const Basic = () => (
   <FauxProvider
     value={{
       color: "teal",
@@ -31,6 +31,6 @@ export const Default = () => (
   </FauxProvider>
 );
 
-Default.args = {
-  title: "FauxProvider Default",
+Basic.args = {
+  title: "FauxProvider Basic",
 };

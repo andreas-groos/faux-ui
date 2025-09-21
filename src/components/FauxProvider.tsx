@@ -1,10 +1,15 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, ReactNode } from "react";
 import { FauxBoxProps } from "../types";
+import {
+  defaultColor,
+  defaultColorWeight,
+  defaultFauxStyle,
+} from "../constants";
 
 const defaultContextValue: FauxBoxProps = {
-  style: { background: "green" },
-  color: "blue",
-  colorWeight: 300,
+  color: defaultColor,
+  colorWeight: defaultColorWeight,
+  fauxStyle: defaultFauxStyle,
 };
 
 const FauxBoxContext = createContext<FauxBoxProps>(defaultContextValue);
@@ -18,9 +23,19 @@ interface FauxBoxProviderProps {
 
 export const FauxProvider: React.FC<FauxBoxProviderProps> = ({
   children,
-  value = defaultContextValue,
+  value = {},
 }) => {
+  const mergedValue = {
+    ...defaultContextValue,
+    ...value,
+    style: {
+      ...defaultContextValue.style,
+      ...(value && value.style),
+    },
+  };
   return (
-    <FauxBoxContext.Provider value={value}>{children}</FauxBoxContext.Provider>
+    <FauxBoxContext.Provider value={mergedValue}>
+      {children}
+    </FauxBoxContext.Provider>
   );
 };
