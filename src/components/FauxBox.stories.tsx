@@ -1,5 +1,5 @@
 import { StoryFn, Meta } from "@storybook/react";
-import { FauxBox } from "./";
+import { FauxBox } from "./FauxBox";
 import { Story } from "storybook/internal/csf";
 
 export default {
@@ -25,7 +25,7 @@ FauxBoxWithSize.args = {
 };
 
 export const FauxBoxWithAutoColor: StoryFn<typeof FauxBox> = () => (
-  <div>
+  <div className="row">
     <FauxBox title="123" autoColor={true} />
     <FauxBox title="123" autoColor={true} colorWeight={100} />
     <FauxBox title="234" autoColor={true} />

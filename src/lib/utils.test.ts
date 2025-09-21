@@ -1,4 +1,4 @@
-import { getColorForText } from ".";
+import { getColorForText } from "./utils";
 
 describe("should return a stable color for a string", () => {
   test("should return #bef264 for `a`", () => {

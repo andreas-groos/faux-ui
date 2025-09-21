@@ -1,7 +1,7 @@
 import React from "react";
-import { ColorName, ColorWeight, getColorHex } from "../../lib/colors";
-import { useElementSize } from "../../lib/hooks";
-import { getColorForText } from "../../lib";
+import { ColorName, ColorWeight, getColorHex } from "../lib/colors";
+import { useElementSize } from "../lib/hooks";
+import { getColorForText } from "../lib/utils";
 
 export type FauxBoxProps = {
   title?: string;
