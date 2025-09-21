@@ -1,15 +1,18 @@
+import React from "react";
 import { ColorName, ColorWeight, getColorHex } from "../../colors";
 
 export type FauxBoxProps = {
   title?: string;
   color?: ColorName;
   colorWeight?: ColorWeight;
+  style?: React.CSSProperties;
 };
 
 export function FauxBox({
   title,
   color = "red",
   colorWeight = 500,
+  style = {},
 }: FauxBoxProps) {
   const stripePattern = `repeating-linear-gradient(45deg, white 0 10px, ${getColorHex(
     color,
@@ -28,6 +31,7 @@ export function FauxBox({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        ...style,
       }}
     >
       <div

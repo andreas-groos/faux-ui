@@ -20,7 +20,15 @@ export const ThreeBoxesInFlex: StoryFn<typeof FauxBox> = () => (
     style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}
   >
     <div style={{ flex: 1 }}>
-      <FauxBox title="Left Box" color="blue" colorWeight={100} />
+      <FauxBox
+        title="Left Box"
+        color="blue"
+        colorWeight={100}
+        style={{
+          border: "2px dashed blue",
+          height: "50vh",
+        }}
+      />
     </div>
     <div style={{ flex: 1 }}>
       <FauxBox title="Center Box" color="green" />
