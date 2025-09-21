@@ -8,12 +8,23 @@ export default {
 
 const Template: StoryFn<typeof FauxBox> = (args) => <FauxBox {...args} />;
 
-export const FauxBox1 = Template.bind({});
-FauxBox1.args = {
-  title: "FauxBox 1",
+export const FauxBoxFull = Template.bind({});
+FauxBoxFull.args = {
+  title: "FauxBox Full",
 };
 
-export const FauxBox2 = Template.bind({});
-FauxBox2.args = {
-  title: "FauxBox 2",
-};
+export const ThreeBoxesInFlex: StoryFn<typeof FauxBox> = () => (
+  <div
+    style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}
+  >
+    <div className="flex-1">
+      <FauxBox title="Left Box" />
+    </div>
+    <div className="flex-1">
+      <FauxBox title="Center Box" />
+    </div>
+    <div className="flex-1">
+      <FauxBox title="Right Box" />
+    </div>
+  </div>
+);
