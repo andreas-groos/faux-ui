@@ -16,7 +16,7 @@ Interactive.args = {
   fauxStyle: "striped",
   color: "blue",
   colorWeight: 500,
-  displaySize: false,
+  showDimensions: false,
   autoColor: false,
 };
 

@@ -22,7 +22,7 @@ export type FauxBoxProps = PropsWithChildren<{
    * When true, displays the FauxBox's current width and height
    * in pixels in the top right corner of the component.
    */
-  displaySize?: boolean;
+  showDimensions?: boolean;
   /**
    * When true, automatically assigns a color based on the `title` prop value.
    * This overrides any manually specified `color` value.

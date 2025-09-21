@@ -10,7 +10,7 @@ export function FauxBox({
   colorWeight = defaultColorWeight,
   fauxStyle = "striped",
   style = {},
-  displaySize = false,
+  showDimensions = false,
   autoColor = false,
   className = "",
   children,
@@ -23,12 +23,12 @@ export function FauxBox({
     title: title || "",
   });
 
-  const { ref, width, height } = useElementSize({ watch: displaySize });
+  const { ref, width, height } = useElementSize({ watch: showDimensions });
   const hasChildren = React.Children.count(children) > 0;
   return (
     <div ref={ref} className={className} style={{ height: "100%" }}>
       <div style={{ position: "relative" }}>
-        {displaySize && (
+        {showDimensions && (
           <div
             style={{
               position: "absolute",

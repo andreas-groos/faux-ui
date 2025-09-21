@@ -54,7 +54,7 @@ export const fauxBoxArgTypes: ArgTypes<FauxBoxProps> = {
     options: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
     description: "Color weight/intensity for the stripes (50-950)",
   },
-  displaySize: {
+  showDimensions: {
     control: "boolean",
     description: "Display the FauxBox's current width and height in pixels",
   },

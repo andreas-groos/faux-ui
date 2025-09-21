@@ -10,7 +10,7 @@ export default {
 } as Meta<typeof FauxBox>;
 
 const Template: StoryFn<typeof FauxBox> = (args) => (
-  <FauxBox displaySize {...args} />
+  <FauxBox showDimensions {...args} />
 );
 export const DisplaySizeTrue = Template.bind({});
 DisplaySizeTrue.args = {
@@ -19,7 +19,7 @@ DisplaySizeTrue.args = {
 
 export const DisplaySizeFalse = Template.bind({});
 DisplaySizeFalse.args = {
-  displaySize: false,
+  showDimensions: false,
   title: "Box without dimensions displayed",
 };
 
@@ -37,7 +37,7 @@ export const ResizableContainer = (args: FauxBoxProps) => {
         height: "300px",
       }}
     >
-      <FauxBox {...args} displaySize />
+      <FauxBox {...args} showDimensions />
     </div>
   );
 };
