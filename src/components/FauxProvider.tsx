@@ -29,8 +29,8 @@ export const FauxProvider: React.FC<FauxBoxProviderProps> = ({
     ...defaultContextValue,
     ...value,
     style: {
-      ...defaultContextValue.style,
-      ...(value && value.style),
+      ...(defaultContextValue.style ?? {}),
+      ...(value?.style ?? {}),
     },
   };
   return (
