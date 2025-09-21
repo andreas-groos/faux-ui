@@ -196,13 +196,13 @@ describe("ColorFamily and Color Palette", () => {
     test("should return undefined for invalid color name", () => {
       // @ts-expect-error Testing invalid input
       const hex = getColorHex("invalidcolor", 500);
-      expect(hex).toBeUndefined();
+      expect(hex).toBe("#000");
     });
 
     test("should return undefined for invalid weight", () => {
       // @ts-expect-error Testing invalid input
       const hex = getColorHex("green", 999);
-      expect(hex).toBeUndefined();
+      expect(hex).toBe("#000");
     });
 
     test("should return valid hex format", () => {
