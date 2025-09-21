@@ -1,5 +1,5 @@
-// Tailwind CSS Color Palette - Complete Collection
-// Based on Tailwind CSS v3.x color system
+// Standard Color Palette Collection
+// Comprehensive color system for design consistency
 
 export type ColorWeight =
   | 50
@@ -50,7 +50,7 @@ export type ColorFamily = {
   colors: ColorValue[];
 };
 
-export const tailwindColors: ColorFamily[] = [
+export const colorPalette: ColorFamily[] = [
   {
     name: "slate",
     colors: [
@@ -407,7 +407,7 @@ export const tailwindColors: ColorFamily[] = [
 
 // Utility functions for working with colors
 export const getColorByName = (name: ColorName): ColorFamily | undefined => {
-  return tailwindColors.find((color) => color.name === name);
+  return colorPalette.find((color) => color.name === name);
 };
 
 export const getColorByWeight = (
@@ -422,11 +422,11 @@ export const getColorHex = (
   name: ColorName,
   weight: ColorWeight
 ): string | undefined => {
-  return getColorByWeight(name, weight)?.hex;
+  return getColorByWeight(name, weight)?.hex ?? "#000";
 };
 
 export const getColorNames = (): ColorName[] => {
-  return tailwindColors.map((color) => color.name);
+  return colorPalette.map((color) => color.name);
 };
 
 export const getColorWeights = (name: ColorName): ColorWeight[] => {
@@ -442,7 +442,7 @@ export const getAllColors = (): Array<{
   rgb: string;
   hsl: string;
 }> => {
-  return tailwindColors.flatMap((family) =>
+  return colorPalette.flatMap((family) =>
     family.colors.map((color) => ({
       name: family.name,
       ...color,

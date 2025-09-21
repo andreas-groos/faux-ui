@@ -11,23 +11,21 @@ const Template: StoryFn<typeof FauxBox> = (args) => <FauxBox {...args} />;
 export const FauxBoxFull = Template.bind({});
 FauxBoxFull.args = {
   title: "FauxBox Full",
+  color: "red",
+  colorWeight: 300,
 };
 
 export const ThreeBoxesInFlex: StoryFn<typeof FauxBox> = () => (
   <div
     style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}
   >
-    <div className="flex-1">
-      <FauxBox
-        title="Left Box"
-        description="This is the left box"
-        color="blue"
-      />
+    <div style={{ flex: 1 }}>
+      <FauxBox title="Left Box" color="blue" colorWeight={100} />
     </div>
-    <div className="flex-1">
+    <div style={{ flex: 1 }}>
       <FauxBox title="Center Box" color="green" />
     </div>
-    <div className="flex-1">
+    <div style={{ flex: 1 }}>
       <FauxBox title="Right Box" color="pink" />
     </div>
   </div>
