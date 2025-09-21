@@ -5,3 +5,9 @@
   align-items: center;
   gap: 8px;
 }
+
+.custom-class {
+  padding: 50px 20px;
+  width: 200px;
+  border: 1px solid pink;
+}
