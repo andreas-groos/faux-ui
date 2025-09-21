@@ -3,7 +3,7 @@ import {
   ColorName,
   ColorWeight,
   ColorValue,
-  tailwindColors,
+  colorPalette,
   getColorByName,
   getColorByWeight,
   getColorHex,
@@ -12,8 +12,8 @@ import {
   getAllColors,
 } from "./colors";
 
-describe("ColorFamily and Tailwind Colors", () => {
-  describe("tailwindColors data structure", () => {
+describe("ColorFamily and Color Palette", () => {
+  describe("colorPalette data structure", () => {
     test("should contain all expected color families", () => {
       const expectedColors: ColorName[] = [
         "slate",
@@ -40,16 +40,16 @@ describe("ColorFamily and Tailwind Colors", () => {
         "rose",
       ];
 
-      expect(tailwindColors).toHaveLength(expectedColors.length);
+      expect(colorPalette).toHaveLength(expectedColors.length);
 
-      const colorNames = tailwindColors.map((color) => color.name);
+      const colorNames = colorPalette.map((color) => color.name);
       expectedColors.forEach((expectedColor) => {
         expect(colorNames).toContain(expectedColor);
       });
     });
 
     test("should have consistent structure for all color families", () => {
-      tailwindColors.forEach((colorFamily) => {
+      colorPalette.forEach((colorFamily) => {
         expect(colorFamily).toHaveProperty("name");
         expect(colorFamily).toHaveProperty("colors");
         expect(Array.isArray(colorFamily.colors)).toBe(true);
@@ -62,7 +62,7 @@ describe("ColorFamily and Tailwind Colors", () => {
         50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
       ];
 
-      tailwindColors.forEach((colorFamily) => {
+      colorPalette.forEach((colorFamily) => {
         expect(colorFamily.colors).toHaveLength(expectedWeights.length);
 
         const weights = colorFamily.colors.map((color) => color.weight);
@@ -73,7 +73,7 @@ describe("ColorFamily and Tailwind Colors", () => {
     });
 
     test("should have valid color values for each color", () => {
-      tailwindColors.forEach((colorFamily) => {
+      colorPalette.forEach((colorFamily) => {
         colorFamily.colors.forEach((color) => {
           // Test structure
           expect(color).toHaveProperty("weight");
@@ -99,7 +99,7 @@ describe("ColorFamily and Tailwind Colors", () => {
     });
 
     test("should have colors sorted by weight in ascending order", () => {
-      tailwindColors.forEach((colorFamily) => {
+      colorPalette.forEach((colorFamily) => {
         const weights = colorFamily.colors.map((color) => color.weight);
         const sortedWeights = [...weights].sort((a, b) => a - b);
         expect(weights).toEqual(sortedWeights);
@@ -334,7 +334,7 @@ describe("ColorFamily and Tailwind Colors", () => {
 
   describe("type safety and consistency", () => {
     test("should maintain type consistency across all color families", () => {
-      tailwindColors.forEach((colorFamily: ColorFamily) => {
+      colorPalette.forEach((colorFamily: ColorFamily) => {
         expect(typeof colorFamily.name).toBe("string");
         expect(Array.isArray(colorFamily.colors)).toBe(true);
 
@@ -350,7 +350,7 @@ describe("ColorFamily and Tailwind Colors", () => {
     test("should have unique combinations of name and weight", () => {
       const combinations = new Set<string>();
 
-      tailwindColors.forEach((colorFamily) => {
+      colorPalette.forEach((colorFamily) => {
         colorFamily.colors.forEach((color) => {
           const combination = `${colorFamily.name}-${color.weight}`;
           expect(combinations.has(combination)).toBe(false);

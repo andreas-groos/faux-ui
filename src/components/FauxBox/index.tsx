@@ -1,47 +1,54 @@
+import React from "react";
+import { ColorName, ColorWeight, getColorHex } from "../../colors";
+
 export type FauxBoxProps = {
   title?: string;
-  description?: string;
-  color?:
-    | "red"
-    | "blue"
-    | "green"
-    | "purple"
-    | "yellow"
-    | "gray"
-    | "pink"
-    | "indigo";
+  color?: ColorName;
+  colorWeight?: ColorWeight;
+  style?: React.CSSProperties;
 };
-
-const stripePatterns = {
-  red: "bg-[repeating-linear-gradient(45deg,white_0_10px,#fca5a5_10px_12px)]",
-  blue: "bg-[repeating-linear-gradient(45deg,white_0_10px,#93c5fd_10px_12px)]",
-  green: "bg-[repeating-linear-gradient(45deg,white_0_10px,#86efac_10px_12px)]",
-  purple:
-    "bg-[repeating-linear-gradient(45deg,white_0_10px,#c4b5fd_10px_12px)]",
-  yellow:
-    "bg-[repeating-linear-gradient(45deg,white_0_10px,#fde68a_10px_12px)]",
-  gray: "bg-[repeating-linear-gradient(45deg,white_0_10px,#d1d5db_10px_12px)]",
-  pink: "bg-[repeating-linear-gradient(45deg,white_0_10px,#f9a8d4_10px_12px)]",
-  indigo:
-    "bg-[repeating-linear-gradient(45deg,white_0_10px,#a5b4fc_10px_12px)]",
-} as const;
 
 export function FauxBox({
   title,
-  description = "",
   color = "red",
+  colorWeight = 500,
+  style = {},
 }: FauxBoxProps) {
-  const stripeClass = stripePatterns[color];
+  const stripePattern = `repeating-linear-gradient(45deg, white 0 10px, ${getColorHex(
+    color,
+    colorWeight
+  )} 10px 12px)`;
 
   return (
     <div
-      className={`border border-black p-4 rounded-lg shadow-sm bg-white ${stripeClass} flex items-center justify-center`}
+      style={{
+        border: "1px solid black",
+        padding: "16px",
+        borderRadius: "8px",
+        boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+        backgroundColor: "white",
+        background: stripePattern,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        ...style,
+      }}
     >
-      <div className="bg-white px-2 py-0.5 rounded border border-transparent text-center">
-        <p className="font-mono ">{title || "FauxBox Component"}</p>
-        {!!description && (
-          <div className="2 text-xs text-gray-500 italic">{description}</div>
-        )}
+      <div
+        style={{
+          backgroundColor: "white",
+          paddingLeft: "8px",
+          paddingRight: "8px",
+          paddingTop: "2px",
+          paddingBottom: "2px",
+          borderRadius: "4px",
+          border: "1px solid transparent",
+          textAlign: "center",
+        }}
+      >
+        <p style={{ fontFamily: "monospace" }}>
+          {title || "FauxBox Component"}
+        </p>
       </div>
     </div>
   );
