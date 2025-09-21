@@ -18,13 +18,17 @@ export const ThreeBoxesInFlex: StoryFn<typeof FauxBox> = () => (
     style={{ display: "flex", gap: "20px", justifyContent: "space-between" }}
   >
     <div className="flex-1">
-      <FauxBox title="Left Box" />
+      <FauxBox
+        title="Left Box"
+        description="This is the left box"
+        color="blue"
+      />
     </div>
     <div className="flex-1">
-      <FauxBox title="Center Box" />
+      <FauxBox title="Center Box" color="green" />
     </div>
     <div className="flex-1">
-      <FauxBox title="Right Box" />
+      <FauxBox title="Right Box" color="pink" />
     </div>
   </div>
 );
