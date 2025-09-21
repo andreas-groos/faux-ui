@@ -24,6 +24,22 @@ FauxBoxWithSize.args = {
   displaySize: true,
 };
 
+export const FauxBoxWithChildren: StoryFn<typeof FauxBox> = () => (
+  <div>
+    <FauxBox title="some title" autoColor={true}>
+      <div className="row" style={{ gap: "8px" }}>
+        <FauxBox title="Child 1" color="blue" />
+        <FauxBox title="Child 2" color="green" />
+        <FauxBox title="Child 3" color="pink" />
+        <FauxBox title="Child 3" color="amber" />
+        <FauxBox title="Child 4" color="rose" />
+      </div>
+    </FauxBox>
+  </div>
+);
+FauxBoxWithChildren.args = {
+  title: "FauxBox With Children",
+};
 export const FauxBoxWithAutoColor: StoryFn<typeof FauxBox> = () => (
   <div>
     <div className="row">
