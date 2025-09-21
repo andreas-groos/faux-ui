@@ -26,14 +26,14 @@ export function FauxBox({
   const { ref, width, height } = useElementSize({ watch: displaySize });
   const hasChildren = React.Children.count(children) > 0;
   return (
-    <div ref={ref} className={className}>
+    <div ref={ref} className={className} style={{ height: "100%" }}>
       <div style={{ position: "relative" }}>
         {displaySize && (
           <div
             style={{
               position: "absolute",
-              top: "0",
-              right: "0",
+              top: 0,
+              right: 0,
               backgroundColor: "rgba(0, 0, 0, 0.7)",
               color: "white",
               fontSize: "8px",
@@ -48,48 +48,51 @@ export function FauxBox({
           </div>
         )}
       </div>
-      <div
-        style={{
-          border: "1px solid black",
-          padding: "4px",
-          borderRadius: "8px",
-          boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
-          backgroundColor: "white",
-          ...fauxCSS,
-          ...style,
-        }}
-      >
-        {hasChildren && !title && children}
-        {hasChildren && !!title && (
-          <div style={{ position: "relative" }}>
-            {children}
+      <div style={{ height: "100%", display: "flex" }}>
+        <div
+          style={{
+            border: "1px solid black",
+            padding: "4px",
+            borderRadius: "8px",
+            boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
+            backgroundColor: "white",
+            width: "100%",
+            ...fauxCSS,
+            ...style,
+          }}
+        >
+          {hasChildren && !title && children}
+          {hasChildren && !!title && (
+            <div style={{ position: "relative" }}>
+              {children}
+              <div
+                style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)",
+                  ...titleWrapperStyle,
+                }}
+              >
+                <p style={titleStyle}>{title}</p>
+              </div>
+            </div>
+          )}
+          {!hasChildren && !!title && (
             <div
               style={{
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
-                ...titleWrapperStyle,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100%",
               }}
             >
-              <p style={titleStyle}>{title}</p>
+              <div style={titleWrapperStyle}>
+                <p style={titleStyle}>{title}</p>
+              </div>
             </div>
-          </div>
-        )}
-        {!hasChildren && !!title && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: "100%",
-            }}
-          >
-            <div style={titleWrapperStyle}>
-              <p style={titleStyle}>{title}</p>
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

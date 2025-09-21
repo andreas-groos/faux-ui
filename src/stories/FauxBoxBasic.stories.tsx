@@ -28,5 +28,21 @@ export const Multiples = () => (
   </div>
 );
 Multiples.args = {
-  title: "FauxBox Default",
+  title: "FauxBox",
+};
+
+export const FillsParent = () => (
+  <div
+    style={{
+      width: "400px",
+      height: "200px",
+      border: "1px dashed #ccc",
+      padding: "1px",
+    }}
+  >
+    <FauxBox title="It fills the parent container" color="green" />
+  </div>
+);
+FillsParent.args = {
+  title: "FauxBox Fills Parent",
 };
