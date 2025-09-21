@@ -1,8 +1,10 @@
+import { PropsWithChildren } from "react";
+
 /**
  * Props for the FauxBox component - a decorative box with striped patterns
  * and customizable colors for UI prototyping and layout visualization.
  */
-export type FauxBoxProps = {
+export type FauxBoxProps = PropsWithChildren<{
   /** Main text displayed in the center of the FauxBox component */
   title?: string;
   /**
@@ -35,7 +37,7 @@ export type FauxBoxProps = {
    * These styles will be merged with the default component styles.
    */
   style?: React.CSSProperties;
-};
+}>;
 
 export type FauxDecoratorStyle = "striped" | "checkered" | "gradient";
 

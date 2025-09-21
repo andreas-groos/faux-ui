@@ -2,6 +2,7 @@ import type { FauxBoxProps } from "../types";
 import { useElementSize } from "../lib/hooks";
 import { defaultColor, defaultColorWeight } from "../constants";
 import { getFauxStyleCSS } from "../lib/css";
+import React from "react";
 
 export function FauxBox({
   title,
@@ -11,6 +12,7 @@ export function FauxBox({
   style = {},
   displaySize = false,
   autoColor = false,
+  children,
 }: FauxBoxProps) {
   const fauxCSS = getFauxStyleCSS({
     color,
@@ -21,6 +23,7 @@ export function FauxBox({
   });
 
   const { ref, width, height } = useElementSize({ watch: displaySize });
+  const hasChildren = React.Children.count(children) > 0;
   return (
     <div ref={ref}>
       <div style={{ position: "relative" }}>
@@ -47,34 +50,58 @@ export function FauxBox({
       <div
         style={{
           border: "1px solid black",
-          padding: "16px",
+          padding: "4px",
           borderRadius: "8px",
           boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
           backgroundColor: "white",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
           ...fauxCSS,
           ...style,
         }}
       >
-        <div
-          style={{
-            backgroundColor: "white",
-            paddingLeft: "8px",
-            paddingRight: "8px",
-            paddingTop: "2px",
-            paddingBottom: "2px",
-            borderRadius: "4px",
-            border: "1px solid transparent",
-            textAlign: "center",
-          }}
-        >
-          <p style={{ fontFamily: "monospace" }}>
-            {title || "FauxBox Component"}
-          </p>
-        </div>
+        {hasChildren && !title && children}
+        {hasChildren && !!title && (
+          <div style={{ position: "relative" }}>
+            {children}
+            <div
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                ...titleWrapperStyle,
+              }}
+            >
+              <p style={titleStyle}>{title}</p>
+            </div>
+          </div>
+        )}
+        {!hasChildren && !!title && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+            }}
+          >
+            <div style={titleWrapperStyle}>
+              <p style={titleStyle}>{title}</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 }
+
+const titleWrapperStyle: React.CSSProperties = {
+  backgroundColor: "white",
+  padding: "4px",
+  borderRadius: "4px",
+  textAlign: "center",
+};
+
+const titleStyle: React.CSSProperties = {
+  fontFamily: "monospace",
+  margin: 0,
+};
