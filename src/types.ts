@@ -27,11 +27,17 @@ export type FauxBoxProps = {
    */
   autoColor?: boolean;
   /**
+   * striped, checkered or gradient style
+   */
+  fauxStyle?: FauxDecoratorStyle;
+  /**
    * Additional CSS styles to apply to the FauxBox container.
    * These styles will be merged with the default component styles.
    */
   style?: React.CSSProperties;
 };
+
+export type FauxDecoratorStyle = "striped" | "checkered" | "gradient";
 
 export type ColorWeight =
   | 50

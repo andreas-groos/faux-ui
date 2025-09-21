@@ -1,28 +1,30 @@
 import type { FauxBoxProps } from "../types";
-import { getColorHex } from "../lib/colors";
 import { useElementSize } from "../lib/hooks";
-import { getColorForText } from "../lib/utils";
 import { defaultColor, defaultColorWeight } from "../constants";
+import { getFauxStyleCSS } from "../lib/css";
 
 export function FauxBox({
   title,
   color = defaultColor,
   colorWeight = defaultColorWeight,
+  fauxStyle = "striped",
   style = {},
-  displaySize: showSize = false,
+  displaySize = false,
   autoColor = false,
 }: FauxBoxProps) {
-  const stripeColor =
-    autoColor && title
-      ? getColorForText(title ?? "", colorWeight)
-      : getColorHex(color, colorWeight);
-  const stripePattern = `repeating-linear-gradient(45deg, white 0 10px, ${stripeColor} 10px 12px)`;
+  const fauxCSS = getFauxStyleCSS({
+    color,
+    fauxStyle,
+    colorWeight,
+    autoColor,
+    title: title || "",
+  });
 
-  const { ref, width, height } = useElementSize({ watch: showSize });
+  const { ref, width, height } = useElementSize({ watch: displaySize });
   return (
     <div ref={ref}>
       <div style={{ position: "relative" }}>
-        {showSize && (
+        {displaySize && (
           <div
             style={{
               position: "absolute",
@@ -49,10 +51,10 @@ export function FauxBox({
           borderRadius: "8px",
           boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1)",
           backgroundColor: "white",
-          background: stripePattern,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          ...fauxCSS,
           ...style,
         }}
       >

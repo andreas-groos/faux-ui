@@ -25,11 +25,15 @@ FauxBoxWithSize.args = {
 };
 
 export const FauxBoxWithAutoColor: StoryFn<typeof FauxBox> = () => (
-  <div className="row">
-    <FauxBox title="123" autoColor={true} />
-    <FauxBox title="123" autoColor={true} colorWeight={100} />
-    <FauxBox title="234" autoColor={true} />
-    <FauxBox title="345" autoColor={true} />
+  <div>
+    <div className="row">
+      <FauxBox title="123" autoColor={true} />
+      <FauxBox title="123" autoColor={true} colorWeight={100} />
+      <FauxBox title="234" autoColor={true} />
+      <FauxBox title="345" autoColor={true} />
+      <FauxBox title="abc" autoColor={true} fauxStyle="checkered" />
+    </div>
+    <FauxBox title="abc" autoColor={true} fauxStyle="gradient" />
   </div>
 );
 FauxBoxWithAutoColor.args = {
