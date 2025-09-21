@@ -1,9 +1,35 @@
+/**
+ * Props for the FauxBox component - a decorative box with striped patterns
+ * and customizable colors for UI prototyping and layout visualization.
+ */
 export type FauxBoxProps = {
+  /** Main text displayed in the center of the FauxBox component */
   title?: string;
+  /**
+   * Color name for the striped pattern background.
+   * Choose from predefined color palette (red, blue, green, etc.)
+   */
   color?: ColorName;
+  /**
+   * Color weight/intensity for the stripes (50-950).
+   * Higher numbers = darker colors, lower numbers = lighter colors.
+   * @default 500
+   */
   colorWeight?: ColorWeight;
-  displaySize?: boolean; // displays FauxBox width and height in px
-  autoColor?: boolean; // set color based on `title` value, overrides provider value etc
+  /**
+   * When true, displays the FauxBox's current width and height
+   * in pixels in the top right corner of the component.
+   */
+  displaySize?: boolean;
+  /**
+   * When true, automatically assigns a color based on the `title` prop value.
+   * This overrides any manually specified `color` value.
+   */
+  autoColor?: boolean;
+  /**
+   * Additional CSS styles to apply to the FauxBox container.
+   * These styles will be merged with the default component styles.
+   */
   style?: React.CSSProperties;
 };
 

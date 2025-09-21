@@ -14,7 +14,7 @@ export function FauxBox({
 }: FauxBoxProps) {
   const stripeColor =
     autoColor && title
-      ? getColorForText(title ?? "aa", colorWeight)
+      ? getColorForText(title ?? "", colorWeight)
       : getColorHex(color, colorWeight);
   const stripePattern = `repeating-linear-gradient(45deg, white 0 10px, ${stripeColor} 10px 12px)`;
 
