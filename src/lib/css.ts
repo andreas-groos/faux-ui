@@ -1,4 +1,4 @@
-import type { FauxBoxProps } from "../types";
+import type { FauxBoxProps, ColorName } from "../types";
 import {
   defaultColor,
   defaultColorWeight,
@@ -54,8 +54,41 @@ export const getFauxStyleCSS = ({
   }
 
   if (fauxStyle === "gradient") {
-    // TODO: implement gradient
-    return {};
+    // Get the color name and find a matching color for gradient
+    const colorName = typeof color === "string" ? color : defaultColor;
+
+    // Comprehensive color mapping for gradients
+    const colorMatches: Record<ColorName, ColorName> = {
+      slate: "gray",
+      gray: "zinc",
+      zinc: "neutral",
+      neutral: "stone",
+      stone: "slate",
+      red: "orange",
+      orange: "amber",
+      amber: "yellow",
+      yellow: "lime",
+      lime: "green",
+      green: "emerald",
+      emerald: "teal",
+      teal: "cyan",
+      cyan: "sky",
+      sky: "blue",
+      blue: "indigo",
+      indigo: "violet",
+      violet: "purple",
+      purple: "fuchsia",
+      fuchsia: "pink",
+      pink: "rose",
+      rose: "red",
+    };
+
+    const matchingColorName = colorMatches[colorName as ColorName] || "purple";
+    const matchingColorHex = getColorHex(matchingColorName, colorWeight);
+
+    return {
+      background: `linear-gradient(135deg, ${actualColor} 0%, ${matchingColorHex} 100%)`,
+    };
   }
   return {};
 };

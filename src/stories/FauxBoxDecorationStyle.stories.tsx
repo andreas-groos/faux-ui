@@ -36,9 +36,10 @@ Checkered.args = {
 
 export const Gradient = Template.bind({});
 Gradient.args = {
-  title: "Gradient Style, TODO",
+  title: "Gradient Style",
   fauxStyle: "gradient",
   color: "purple",
+  colorWeight: 200,
 };
 
 export const Grid = Template.bind({});
