@@ -43,7 +43,7 @@ export type FauxBoxProps = PropsWithChildren<{
   style?: React.CSSProperties;
 }>;
 
-export type FauxDecoratorStyle = "striped" | "checkered" | "gradient";
+export type FauxDecoratorStyle = "striped" | "checkered" | "gradient" | "grid";
 
 export type ColorWeight =
   | 50

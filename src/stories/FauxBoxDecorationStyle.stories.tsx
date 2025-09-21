@@ -40,3 +40,10 @@ Gradient.args = {
   fauxStyle: "gradient",
   color: "purple",
 };
+
+export const Grid = Template.bind({});
+Grid.args = {
+  title: "Gradient Style",
+  fauxStyle: "grid",
+  color: "teal",
+};

@@ -28,16 +28,27 @@ export const getFauxStyleCSS = ({
   }
 
   if (fauxStyle === "checkered") {
-    const subtleColor = `${actualColor}50`;
     return {
       background: `
-        linear-gradient(90deg, ${subtleColor} 50%, transparent 50%),
-        linear-gradient(${subtleColor} 50%, transparent 50%)
+        linear-gradient(90deg, ${actualColor} 50%, transparent 50%),
+        linear-gradient(${actualColor} 50%, transparent 50%)
       `
         .replace(/\s+/g, " ")
         .trim(),
       backgroundSize: "12px 12px",
       backgroundPosition: "0 0, 6px 6px",
+      backgroundColor: "white",
+    };
+  }
+  if (fauxStyle === "grid") {
+    return {
+      background: `
+        linear-gradient(to right, ${actualColor} 1px, transparent 1px),
+        linear-gradient(to bottom, ${actualColor} 1px, transparent 1px)
+      `
+        .replace(/\s+/g, " ")
+        .trim(),
+      backgroundSize: "10px 10px",
       backgroundColor: "white",
     };
   }
