@@ -12,6 +12,7 @@ export function FauxBox({
   style = {},
   displaySize = false,
   autoColor = false,
+  className = "",
   children,
 }: FauxBoxProps) {
   const fauxCSS = getFauxStyleCSS({
@@ -25,7 +26,7 @@ export function FauxBox({
   const { ref, width, height } = useElementSize({ watch: displaySize });
   const hasChildren = React.Children.count(children) > 0;
   return (
-    <div ref={ref}>
+    <div ref={ref} className={className}>
       <div style={{ position: "relative" }}>
         {displaySize && (
           <div

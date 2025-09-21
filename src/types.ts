@@ -33,6 +33,10 @@ export type FauxBoxProps = PropsWithChildren<{
    */
   fauxStyle?: FauxDecoratorStyle;
   /**
+   * CSS classes that get passed through to the `<FauxBox>`
+   */
+  className?: string;
+  /**
    * Additional CSS styles to apply to the FauxBox container.
    * These styles will be merged with the default component styles.
    */
