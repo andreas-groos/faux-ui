@@ -1,26 +1,29 @@
 import type { FauxBoxProps } from "../types";
+import React from "react";
 import { useElementSize } from "../lib/hooks";
 import { defaultColor, defaultColorWeight } from "../constants";
 import { getFauxStyleCSS } from "../lib/css";
-import React from "react";
+import { useFauxBox } from "./FauxProvider";
 
-export function FauxBox({
-  title,
-  color = defaultColor,
-  colorWeight = defaultColorWeight,
-  fauxStyle = "striped",
-  style = {},
-  showDimensions = false,
-  autoColor = false,
-  className = "",
-  children,
-}: FauxBoxProps) {
+export function FauxBox(props: FauxBoxProps) {
+  const providerValues = useFauxBox();
+  const {
+    title,
+    color = defaultColor,
+    colorWeight = defaultColorWeight,
+    fauxStyle = "striped",
+    style = {},
+    showDimensions = false,
+    autoColor = false,
+    className = "",
+    children,
+  } = { ...providerValues, ...props };
   const fauxCSS = getFauxStyleCSS({
     color,
     fauxStyle,
     colorWeight,
     autoColor,
-    title: title || "",
+    title,
   });
 
   const { ref, width, height } = useElementSize({ watch: showDimensions });
